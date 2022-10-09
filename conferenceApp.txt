@@ -1,0 +1,53 @@
+[6:59 AM] Alex Mang
+Important!
+Today's exercise
+Contoso's conference app is getting further enhancements
+Team, today is LAB DAY again - time to get our hands dirty with code!
+Today's challenge is to further enhance your Conference App.
+
+Here are the user stories:
+As a conference attendee, I want to be able to book a seat at a session. As an attendee, I want to know which sessions I booked 
+a seat for.As an attendee, when the time of a session approaches, I want to receive a reminder e-mail telling me that 
+I'm booked for that particular session.
+
+Non functional requirements:
+Use the latest version of Bootstrap.Make it easy to customize Bootstrap's colorsTo identify an attendee, you should generate 
+a cookie persisted on the disk with a random number. If the cookie exists, it should always contain a random (and hopefully unique)identifier, identifying the attendee. 
+
+If it does not exist, it should be created immediately.Data must be persisted in a 
+database (preferably use SQL Databases - this is Azure's PaaS, aka managed, offering for SQL Server)Provide all the data 
+(sessions, speakers, available seats etc.) via an APIBesides the web front-end project and the Web API project, 
+have a worker  project (Console Projects are fine too) which checks which sessions are coming up in the next x minutes. 
+
+try {
+    var storTest = window['localStorage'];
+    storTest.setItem("", ".");
+    storTest.removeItem("");
+}
+catch (e) { alert("Local Storage Not Available"); }
+ 
+function RandomId(min, max) {
+    return Math.floor(Math.random() * (max - min)) + min;
+}
+ 
+var ls;
+ls = localStorage;
+var newUser = true;
+while (newUser) {
+    var newId = RandomId(1, 1000000);
+    if (ls.key(newId) == null) {
+        newUser = false;
+        ls.setItem(newId, "Username")
+    }
+}
+
+
+
+For the sessions which are coming up, it sends a reminder e-mail to all the attendees registered for that session.
+Applications (at least the web front-end and the web api) must run on App Services
+
+I am of the opinion that the projects, as they were left off last week are in good working state and you can build on top of 
+them the new capabilities. Effectively, I expect that you're updating your Session models to retain a list of attendees and 
+update your services to work with a SQL-based database (rather than a JSON file).
+For the Bootstrap requirement, I expect you install Bootstrap from a package management solution and compile Sass to CSS. 
+
